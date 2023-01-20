@@ -14,4 +14,23 @@ class UserController extends Controller
         return view('users', compact('users'));
 
     }
+
+    public function edit($id) {
+
+        if (!$user = User::find($id))
+            return redirect()->route('users.index');
+
+        return view('edit', compact('user'));
+
+    }
+
+    public function update(Request $request, $id) {
+
+    $user = User::find($id);
+    $data = $request->only('name', 'email');
+
+    $user->update($data);
+    return redirect()->route('users.index');
+
+    }
 }

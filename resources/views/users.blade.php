@@ -4,6 +4,7 @@
 
 @section('content')
 
+<h1 class="text-center">Lista de Usuários</h1>
 
 <style>
 
@@ -34,7 +35,7 @@
                     <td>
                         <a href="#" class="font-bold text-white
                         py-3 px-4 rounded-md bg-blue-500 hover:bg-blue-600">Ver</a>
-                        <a href="#" class="font-bold text-white
+                        <a href="/edit/{{$user['id']}}" class="font-bold text-white
                         py-3 px-4 rounded-md bg-blue-500 hover:bg-blue-600">Editar</a>
                         <a href="#" class="font-bold text-white
                         py-3 px-4 rounded-md bg-red-500 hover:bg-red-600">Excluir</a>

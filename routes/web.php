@@ -37,3 +37,9 @@ Route::get('/screen', function () {
 })->name('screen');
 
 Route::get('/users', [UserController::class, 'index'])->name('users.index');
+
+Route::get('/edit/{id}', [UserController::class, 'edit'])->name('users.edit');
+
+Route::put('/edit/{id}', [UserController::class, 'update'])
+    ->name('edit.update');
+
