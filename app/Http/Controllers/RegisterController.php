@@ -20,6 +20,8 @@ class RegisterController extends Controller {
             'password' => 'required|confirmed',
         ]);
 
+        dd(request(['password']));
+
         $user = User::create(request(['name', 'email', 'password']));
 
         auth()->login($user);

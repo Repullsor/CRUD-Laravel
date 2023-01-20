@@ -40,6 +40,13 @@ Route::get('/users', [UserController::class, 'index'])->name('users.index');
 
 Route::get('/edit/{id}', [UserController::class, 'edit'])->name('users.edit');
 
-Route::put('/edit/{id}', [UserController::class, 'update'])
-    ->name('edit.update');
+Route::put('/edit/{id}', [UserController::class, 'update'])->name('edit.update');
+
+Route::get('/show/{user}', [UserController::class, 'show'])->name('users.show');
+
+Route::delete('/users/{user}', [UserController::class, 'destroy'])->name('users.delete');
+
+
+
+
 
