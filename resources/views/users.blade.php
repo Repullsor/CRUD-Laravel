@@ -49,5 +49,9 @@
             </thead>
         </table>
     </div>
+    <div class="font-bold text-white
+                py-3 px-4 rounded-md bg-indigo-500 hover:bg-blue-600" style="margin: 10px auto; width: 80px; text-align: center">
+                <a href="{{ route('screen') }}">Voltar</a>
+    </div>
 
 @endsection

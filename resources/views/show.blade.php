@@ -27,13 +27,16 @@
                     py-3 px-4 rounded-md bg-red-500 hover:bg-red-600">Excluir</a>
                 </td>
             </tr>
-            <a href="{{ route('users.index') }}"
-                class="font-bold text-white
-                py-3 px-4 rounded-md bg-indigo-500 hover:bg-blue-600">Voltar</a>
+            
             
 
         </thead>
     </table>
+    
+</div>
+<div class="font-bold text-white
+    py-3 px-4 rounded-md bg-indigo-500 hover:bg-blue-600" style="margin: 10px auto; width: 80px; text-align: center">
+    <a href="{{ route('users.index') }}">Voltar</a>
 </div>
 
 
