@@ -33,16 +33,20 @@ rounded-lg shadow-lg">
                 w-full text-lg placeholder-gray-900 p-2 my-2 focus:bg-white"
                 placeholder="Confirme a nova senha" id="password_confirmation" name="password_confirmation">
 
-                <a href="{{ route('users.index') }}"
-                class="font-bold text-white
-                py-3 px-4 rounded-md bg-indigo-500 hover:bg-blue-600" style="margin-left: 100px;">Voltar</a>
-
-                <button type="submit"
-                class="font-bold text-white
-                py-3 px-4 rounded-md bg-indigo-500 hover:bg-blue-600">Salvar</button>
-
+                <div class="" style="display: flex; justify-content: center;">
+                    <a href="{{ route('users.index') }}"
+                        class="font-bold text-white
+                        py-3 px-4 rounded-md bg-indigo-500 hover:bg-blue-600" >Voltar</a>
+        
+                    <button type="submit"
+                    class="font-bold text-white
+                    py-3 px-4 rounded-md bg-indigo-500 hover:bg-blue-600">Salvar</button>
+                </div>
+                
 
         </form>
+
+        
 
 
     </div>

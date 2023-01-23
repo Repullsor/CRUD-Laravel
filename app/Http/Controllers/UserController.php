@@ -62,10 +62,30 @@ class UserController extends Controller
         return view('show', compact('user'));
     }
 
-    public function destroy(User $user) {
+    public function destroy($id) {
 
-        $user->delete();
+        if(auth()->user()->id != $id) {
+            $user = User::find($id);
+            $user->delete();
+        }
+
         return back();
 
     }
-}
+
+    public function block($id) {
+
+        User::where('id', $id)->update(['status'=>0]);
+        return redirect()->route('users.index');
+
+    }
+
+    public function unlock($id) {
+
+        User::where('id', $id)->update(['status'=>1]);
+        return redirect()->route('users.index');
+
+    }
+
+    
+    }

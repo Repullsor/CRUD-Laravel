@@ -1,10 +1,10 @@
 @extends('layouts.app')
 
-@section('title', 'List')
+@section('title', 'Users')
 
 @section('content')
 
-    <h1 class="text-center">Lista de Usuários</h1>
+    <h1 class="text-center font-bold text-xl">Lista de Usuários</h1>
 
     <style>
         th,
@@ -26,9 +26,13 @@
                     <th scope="col" class="px-6 py-3">Ações</th>
                 </tr>
 
+                @php
+                    $i = 1;
+                @endphp
+                
                 @foreach ($users as $user)
                     <tr style="height: 50px">
-                        <td scope="col" class="px-6 py-3">{{ $user['id'] }}</td>
+                        <td scope="col" class="px-6 py-3">{{ $i++ }}</td>
                         <td scope="col" class="px-6 py-3">{{ $user['name'] }}</td>
                         <td scope="col" class="px-6 py-3">{{ $user['email'] }}</td>
                         <td>
@@ -39,8 +43,15 @@
                                 class="font-bold text-white py-3 px-4 rounded-md bg-blue-500 hover:bg-blue-600">Ver</a>
                             <a href="/edit/{{ $user['id'] }}"
                                 class="font-bold text-white py-3 px-4 rounded-md bg-blue-500 hover:bg-blue-600">Editar</a>
+                                @if ($user['status'] == 1) 
+                            <a href="/users/block/{{ $user['id'] }}"
+                                class="font-bold text-white py-3 px-4 rounded-md bg-yellow-300 hover:bg-yellow-400">BLOQUEAR</a>
+                                @else
+                            <a href="/users/unlock/{{ $user['id'] }}"
+                                class="font-bold text-white py-3 px-4 rounded-md bg-yellow-300 hover:bg-yellow-400">DESBLOQUEAR</a>
+                                @endif
                                 <button type="submit"
-                                    class="font-bold text-white py-3 px-4 rounded-md bg-red-500 hover:bg-red-600">Excluir</button>
+                                    class="font-bold text-white py-3 px-4 rounded-md bg-red-500 hover:bg-red-600">EXCLUIR</button>
                             </form>
                         </td>
                     </tr>

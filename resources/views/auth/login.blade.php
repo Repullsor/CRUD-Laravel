@@ -22,11 +22,11 @@ rounded-lg shadow-lg">
     text-lg placeholder-gray-900 p-2 my-2 focus:bg-white"
                 placeholder="Senha" id="password" name="password">
 
-            @error('message')
+            @if ($message = Session::get('error'))
                 <p class="border border-red-500 rounded-md bg-red-100 w-full
-      text-red-600 p-2 my-2"> O e-mail ou senha estão incorretos
+    text-red-600 p-2 my-2"> {{ $message }}
                 </p>
-            @enderror
+            @endif
 
             <button type="submit"
                 class="rounded-md bg-indigo-500 w-full text-lg

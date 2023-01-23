@@ -10,7 +10,7 @@
             border-2 border-white py-2 px-4 bg-indigo-500 text-white rounded-md hover:bg-white 
             hover:text-indigo-700" style="margin-bottom: 1%">Usuários</a>
 
-        <a href="#"
+        <a href="{{ route('products.index') }}"
             class="font-semibold
             border-2 border-white py-2 px-4 bg-indigo-500 text-white rounded-md hover:bg-white 
             hover:text-indigo-700">Produtos</a>
