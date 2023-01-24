@@ -38,14 +38,24 @@ Route::group(['middleware' => ['auth']], function() {
     
     Route::get('/users/unlock/{id}', [UserController::class, 'unlock'])->name('users.unlock');
     
+
+    // Rotas Produtos
+
     Route::get('/products', [ProductController::class, 'index'])->name('products.index');
     
     Route::get('/create', function () {
-        return view('create');
+        return view('products.create');
     })->name('create');
     
-    Route::post('/create', [ProductController::class, 'store'])
-        ->name('product.store');
+    Route::post('/create', [ProductController::class, 'store'])->name('product.store');
+
+    Route::get('/products/show/{product}', [ProductController::class, 'show'])->name('product.show');
+
+    Route::get('/products/edit/{id}', [ProductController::class, 'edit'])->name('product.edit');
+    
+    Route::put('/products/edit/{id}', [ProductController::class, 'update'])->name('product.update');
+
+    Route::delete('/products/{id}', [ProductController::class, 'destroy'])->name('product.delete');
 
 });
 

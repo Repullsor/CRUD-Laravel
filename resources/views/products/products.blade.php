@@ -44,12 +44,12 @@
                         <td scope="col" class="px-6 py-3">{{ $product['quantity'] }}</td>
                         
                         <td>
-                            <form action="" method="POST">
+                            <form action="{{ route('product.delete', $product['id']) }}" method="POST">
                                 @csrf
                                 @method('DELETE')
-                            <a href="/show/{{ $product['id'] }}"
+                            <a href="/products/show/{{ $product['id'] }}"
                                 class="font-bold text-white py-3 px-4 rounded-md bg-blue-500 hover:bg-blue-600">Ver</a>
-                            <a href="/edit/{{ $product['id'] }}"
+                            <a href="/products/edit/{{ $product['id'] }}"
                                 class="font-bold text-white py-3 px-4 rounded-md bg-blue-500 hover:bg-blue-600">Editar</a>
                                 <button type="submit"
                                     class="font-bold text-white py-3 px-4 rounded-md bg-red-500 hover:bg-red-600">EXCLUIR</button>

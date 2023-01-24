@@ -11,7 +11,7 @@ class ProductController extends Controller
 
         $products = Product::all()->toArray();
 
-        return view('products', compact('products'));
+        return view('products.products', compact('products'));
 
     }
 
@@ -26,5 +26,39 @@ class ProductController extends Controller
         $product = Product::create(request(['name', 'description', 'quantity']));
 
         return redirect()->to('/products');
+    }
+
+    public function edit($id) {
+
+        if (!$product = Product::find($id))
+            return redirect()->route('products.index');
+
+        return view('products.edit', compact('product'));
+
+    }
+
+    public function show($id) {
+
+        $product = Product::find($id);
+        return view('products.show', compact('product'));
+    }
+
+    public function update(Request $request, $id) {
+
+        $product = Product::find($id);
+        $data = $request->only('name', 'description', 'quantity');
+    
+        $product->update($data);
+        return redirect()->route('products.index');
+    
+        }
+
+    public function destroy($id) {
+
+            $product = Product::find($id);
+            $product->delete();
+        
+        return back();
+
     }
 }

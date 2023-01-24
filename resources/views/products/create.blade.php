@@ -48,7 +48,7 @@ rounded-lg shadow-lg">
             <div class="" style="display: flex; justify-content: center;">
                 <a href="{{ route('users.index') }}"
                     class="font-bold text-white
-                    py-3 px-4 rounded-md bg-indigo-500 hover:bg-blue-600" >Voltar</a>
+                    py-3 px-4 rounded-md bg-indigo-500 hover:bg-blue-600" style=" margin-right: 10px;">Voltar</a>
     
                 <button type="submit"
                 class="font-bold text-white
