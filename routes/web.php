@@ -5,6 +5,7 @@ use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\SessionsController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\RoleController;
 use App\Http\Controllers\UserController;
 
 Route::group(['middleware' => ['auth']], function() {
@@ -56,6 +57,14 @@ Route::group(['middleware' => ['auth']], function() {
     Route::put('/products/edit/{id}', [ProductController::class, 'update'])->name('product.update');
 
     Route::delete('/products/{id}', [ProductController::class, 'destroy'])->name('product.delete');
+
+    // Rotas Roles
+    // Objeto route :: metodo ('/rota para o usuário', [Controller::class, 'nome da função que está no controller'])->name('nome da rota para  back end');
+    Route::get('/roles', [RoleController::class, 'index'])->name('roles.index');
+
+    // Route::get('/roles', function () {
+    //     return view('roles.roles');
+    // })->name('roles');
 
 });
 

@@ -14,6 +14,11 @@
             class="font-semibold
             border-2 border-white py-2 px-4 bg-indigo-500 text-white rounded-md hover:bg-white 
             hover:text-indigo-700">Produtos</a>
+
+        <a href="{{ route('roles.index') }}"
+            class="font-semibold
+            border-2 border-white py-2 px-4 bg-indigo-500 text-white rounded-md hover:bg-white 
+            hover:text-indigo-700" style="width: 100px; margin-top: 12px; text-align: center">Roles</a>
     </div>
 
 @endsection
