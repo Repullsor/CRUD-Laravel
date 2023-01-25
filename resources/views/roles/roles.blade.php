@@ -6,7 +6,7 @@
 
 <div class="ml-auto flex justify-end font-bold text-white
                 py-3 px-4 rounded-md bg-green-500 hover:bg-green-600 flex center" style="width: 150px; margin-block: 10px 0; margin-right: 62px">
-                <a href="{{ route('create') }}">Criar Nova Role</a>
+                <a href="{{ route('roles.create') }}">Criar Nova Role</a>
     </div>
 
     <h1 class="text-center font-bold text-xl">Gerenciamento das Roles</h1>
@@ -37,16 +37,15 @@
                 @foreach ($roles as $role)
                     <tr style="height: 50px">
                         <td scope="col" class="px-6 py-3">{{ $i++ }}</td>
-                        <td scope="col" class="px-6 py-3"></td>
-                        
+                        <td scope="col" class="px-6 py-3">{{ $role['name'] }}</td>
                         
                         <td>
-                            <form action="" method="POST">
+                            <form action="{{ route('roles.delete', $role['id']) }}" method="POST">
                                 @csrf
                                 @method('DELETE')
-                            <a href="/products/show/"
+                            <a href="/roles/show/"
                                 class="font-bold text-white py-3 px-4 rounded-md bg-blue-500 hover:bg-blue-600">Ver</a>
-                            <a href="/products/edit/"
+                            <a href="/roles/edit/"
                                 class="font-bold text-white py-3 px-4 rounded-md bg-blue-500 hover:bg-blue-600">Editar</a>
                                 <button type="submit"
                                     class="font-bold text-white py-3 px-4 rounded-md bg-red-500 hover:bg-red-600">EXCLUIR</button>

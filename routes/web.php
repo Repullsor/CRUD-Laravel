@@ -62,6 +62,12 @@ Route::group(['middleware' => ['auth']], function() {
     // Objeto route :: metodo ('/rota para o usuário', [Controller::class, 'nome da função que está no controller'])->name('nome da rota para  back end');
     Route::get('/roles', [RoleController::class, 'index'])->name('roles.index');
 
+    Route::get('/roles/create', [RoleController::class, 'create'])->name('roles.create');
+
+    Route::post('/roles/create', [RoleController::class, 'store'])->name('roles.store');
+
+    Route::delete('/roles/{id}', [RoleController::class, 'destroy'])->name('roles.delete');
+
     // Route::get('/roles', function () {
     //     return view('roles.roles');
     // })->name('roles');
