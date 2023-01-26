@@ -9,7 +9,7 @@
                 <a href="{{ route('create') }}">Adicionar Produto</a>
     </div>
 
-    <h1 class="text-center font-bold text-xl">Lista de Produtos</h1>
+    <h1 class="text-center font-bold text-xl my-5">Lista de Produtos</h1>
 
     <style>
         th,

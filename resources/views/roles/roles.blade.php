@@ -9,7 +9,7 @@
                 <a href="{{ route('roles.create') }}">Criar Nova Role</a>
     </div>
 
-    <h1 class="text-center font-bold text-xl">Gerenciamento das Roles</h1>
+    <h1 class="text-center font-bold text-xl my-5">Gerenciamento das Roles</h1>
 
     <style>
         th,
@@ -43,9 +43,9 @@
                             <form action="{{ route('roles.delete', $role['id']) }}" method="POST">
                                 @csrf
                                 @method('DELETE')
-                            <a href="/roles/show/"
+                            <a href="/roles/show/{{ $role['id'] }}"
                                 class="font-bold text-white py-3 px-4 rounded-md bg-blue-500 hover:bg-blue-600">Ver</a>
-                            <a href="/roles/edit/"
+                            <a href="/roles/edit/{{ $role['id'] }}"
                                 class="font-bold text-white py-3 px-4 rounded-md bg-blue-500 hover:bg-blue-600">Editar</a>
                                 <button type="submit"
                                     class="font-bold text-white py-3 px-4 rounded-md bg-red-500 hover:bg-red-600">EXCLUIR</button>

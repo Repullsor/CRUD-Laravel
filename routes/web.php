@@ -68,6 +68,12 @@ Route::group(['middleware' => ['auth']], function() {
 
     Route::delete('/roles/{id}', [RoleController::class, 'destroy'])->name('roles.delete');
 
+    Route::get('/roles/show/{id}', [RoleController::class, 'show'])->name('roles.show');
+
+    Route::get('/roles/edit/{id}', [RoleController::class, 'edit'])->name('roles.edit');
+
+    Route::put('/roles/edit/{id}', [RoleController::class, 'update'])->name('roles.update');
+
     // Route::get('/roles', function () {
     //     return view('roles.roles');
     // })->name('roles');

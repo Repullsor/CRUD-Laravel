@@ -4,7 +4,7 @@
 
 @section('content')
 
-    <h1 class="text-center font-bold text-xl">Lista de Usuários</h1>
+    <h1 class="text-center font-bold text-xl my-5">Lista de Usuários</h1>
 
     <style>
         th,
@@ -14,7 +14,7 @@
         }
     </style>
 
-    <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
+    <div class="relative overflow-x-auto shadow-md sm:rounded-lg mt-5">
         <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
 
             <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400"
@@ -46,8 +46,7 @@
                             <a href="/edit/{{ $user['id'] }}"
                                 class="font-bold text-white py-3 px-4 rounded-md bg-blue-500 hover:bg-blue-600">Editar</a>
                                 @if ($user['status'] == 1)
-                            <a href="/roles"
-                                class="font-bold text-white py-3 px-4 rounded-md bg-blue-500 hover:bg-blue-600">Roles</a>
+                           
                             <a href="/users/block/{{ $user['id'] }}"
                                 class="font-bold text-white py-3 px-4 rounded-md bg-yellow-300 hover:bg-yellow-400">BLOQUEAR</a>
                                 @else
