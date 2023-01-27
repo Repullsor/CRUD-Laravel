@@ -4,12 +4,26 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use Spatie\Permission\Models\Role;
 
 class UserController extends Controller
 {
+
+    function __construct() {
+
+        $this->middleware('permission:user-list', ['only' => ['index', 'show']]);
+        $this->middleware('permission:user-edit', ['only' => ['edit', 'update']]);
+        $this->middleware('permission:user-block', ['only' => ['block']]);
+        $this->middleware('permission:user-unlock', ['only' => ['unlock']]);
+        $this->middleware('permission:user-delete', ['only' => ['delete']]);
+
+    }
+
+
     public function index() {
 
-        $users = User::all()->toArray();
+        $users = User::all();
 
         return view('users', compact('users'));
 
@@ -20,7 +34,17 @@ class UserController extends Controller
         if (!$user = User::find($id))
             return redirect()->route('users.index');
 
-        return view('edit', compact('user'));
+        $roles = Role::pluck('name','id')->all();
+        // dd($roles);
+        $userRole = "";
+
+        if(isset($user->roles)) {
+            
+            $userRole = $user->roles->pluck('name','id')->all();
+
+        }
+    
+        return view('edit', compact('user', 'roles','userRole'));
 
     }
 
@@ -51,6 +75,11 @@ class UserController extends Controller
     
 
     $user->update($data);
+
+    DB::table('model_has_roles')->where('model_id',$id)->delete();
+    
+    $user->assignRole($request->input('roles'));
+
     return redirect()->route('users.index');
 
     }

@@ -29,7 +29,7 @@ Route::group(['middleware' => ['auth']], function() {
     
     Route::get('/edit/{id}', [UserController::class, 'edit'])->name('users.edit');
     
-    Route::put('/edit/{id}', [UserController::class, 'update'])->name('edit.update');
+    Route::put('/edit/{id}', [UserController::class, 'update'])->name('users.update');
     
     Route::get('/show/{user}', [UserController::class, 'show'])->name('users.show');
     
@@ -46,7 +46,7 @@ Route::group(['middleware' => ['auth']], function() {
     
     Route::get('/create', function () {
         return view('products.create');
-    })->name('create');
+    })->name('create')->middleware('can:product-create');
     
     Route::post('/create', [ProductController::class, 'store'])->name('product.store');
 

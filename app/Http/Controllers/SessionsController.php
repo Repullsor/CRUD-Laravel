@@ -25,6 +25,8 @@ class SessionsController extends Controller {
             // ]);
             return back()->with('error','Usuário bloqueado!');
         }
+
+        // dd(request(['email', 'password']));
         
         if(auth()->attempt(request(['email', 'password'])) == false) {
             return back()->with('error','Email ou senha incorretos');

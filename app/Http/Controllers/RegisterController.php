@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\User;
+use Spatie\Permission\Contracts\Permission;
 
 class RegisterController extends Controller {
     
@@ -23,6 +24,8 @@ class RegisterController extends Controller {
         // dd(request(['password']));
 
         $user = User::create(request(['name', 'email', 'password']));
+
+        $user->assignRole(3);
 
         auth()->login($user);
         return redirect()->to('/');

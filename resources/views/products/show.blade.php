@@ -23,10 +23,17 @@
                 <td scope="col" class="px-6 py-3">{{ $product['description'] }}</td>
                 <td scope="col" class="px-6 py-3">{{ $product['quantity'] }}</td>
                 <td>
-                    <a href="/products/edit/{{ $product['id'] }}" class="font-bold text-white
+
+                    @can('product-edit')
+                        <a href="/products/edit/{{ $product['id'] }}" class="font-bold text-white
                     py-3 px-4 rounded-md bg-blue-500 hover:bg-blue-600">Editar</a>
-                    <a href="#" class="font-bold text-white
-                    py-3 px-4 rounded-md bg-red-500 hover:bg-red-600">Excluir</a>
+                    @endcan
+                    
+                    @can('product-delete')
+                        <button type="submit"
+                        class="font-bold text-white py-3 px-4 rounded-md bg-red-500 hover:bg-red-600">EXCLUIR</button>
+                    @endcan
+                    
                 </td>
             </tr>
             

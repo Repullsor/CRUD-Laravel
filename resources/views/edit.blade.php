@@ -10,7 +10,7 @@ rounded-lg shadow-lg">
 
         <h1 class="text-3xl text-center font-bold">Editar Usuário</h1>
 
-        <form class="mt-4" method="post" action="{{ route('edit.update', $user->id) }}">
+        <form class="mt-4" method="post" action="{{ route('users.update', $user->id) }}">
             @csrf
             @method('PUT')
             <input type="text"
@@ -33,7 +33,10 @@ rounded-lg shadow-lg">
                 w-full text-lg placeholder-gray-900 p-2 my-2 focus:bg-white"
                 placeholder="Confirme a nova senha" id="password_confirmation" name="password_confirmation">
 
-                <div class="" style="display: flex; justify-content: center;">
+                <label for="pet-select">Atribua uma role:</label>
+                 {!! Form::select('roles[]', $roles, $userRole, array('class' => 'form-control')) !!}
+                 
+            <div class="" style="display: flex; justify-content: center;">
                     <a href="{{ route('users.index') }}"
                         class="font-bold text-white
                         py-3 px-4 rounded-md bg-indigo-500 hover:bg-blue-600" style=" margin-right: 10px;">Voltar</a>
@@ -42,9 +45,9 @@ rounded-lg shadow-lg">
                     class="font-bold text-white
                     py-3 px-4 rounded-md bg-indigo-500 hover:bg-blue-600">Salvar</button>
                 </div>
-                
-
         </form>
+
+    </div>
 
         
 

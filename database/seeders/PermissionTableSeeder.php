@@ -17,8 +17,9 @@ class PermissionTableSeeder extends Seeder
     {
         $permissions = [
            'user-list',
-           'user-create',
            'user-edit',
+           'user-block',
+           'user-unlock',
            'user-delete',
            'product-list',
            'product-create',
@@ -32,8 +33,9 @@ class PermissionTableSeeder extends Seeder
 
         $permissions_name = [
             'Ver Usuário',
-            'Criar Usuário',
             'Editar Usuário',
+            'Bloquear Usuário',
+            'Desbloquear Usuário',
             'Excluir Usuário',
             'Ver Produto',
             'Criar Produto',

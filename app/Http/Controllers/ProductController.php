@@ -7,6 +7,16 @@ use App\Models\Product;
 
 class ProductController extends Controller
 {
+
+    function __construct() {
+
+        $this->middleware('permission:product-list', ['only' => ['index', 'show']]);
+        $this->middleware('permission:product-create', ['only' => ['store']]);
+        $this->middleware('permission:product-edit', ['only' => ['edit', 'update']]);
+        $this->middleware('permission:product-delete', ['only' => ['delete']]);
+
+    }
+
     public function index() {
 
         $products = Product::all()->toArray();
