@@ -22,9 +22,9 @@ rounded-lg shadow-lg">
     text-lg placeholder-gray-900 p-2 my-2 focus:bg-white"
                 placeholder="Senha" id="password" name="password">
 
-            @if ($message = Session::get('error'))
+            @if ($message = Session::get('message'))
                 <p class="border border-red-500 rounded-md bg-red-100 w-full
-    text-red-600 p-2 my-2"> {{ $message }}
+    text-red-600 p-2 my-2">{{ $message }}
                 </p>
             @endif
 

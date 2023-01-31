@@ -20,16 +20,16 @@ class SessionsController extends Controller {
         if (isset($user[0]->status) && $user[0]->status == 0){
 
 
-            // return back()->withErrors([
+            // return back()->withMessages([
             //     'message' => 'O e-mail está incorretoooo',
             // ]);
-            return back()->with('error','Usuário bloqueado!');
+            return back()->with('warning','Usuário bloqueado!');
         }
 
         // dd(request(['email', 'password']));
         
         if(auth()->attempt(request(['email', 'password'])) == false) {
-            return back()->with('error','Email ou senha incorretos');
+            return back()->with('message', 'Email ou senha incorretos');
 
         } else {
 

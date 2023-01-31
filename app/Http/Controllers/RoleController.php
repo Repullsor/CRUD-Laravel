@@ -35,7 +35,7 @@ class RoleController extends Controller
 
         $permissionRole = Permission::where('name', 'like', '%role%')->get();
 
-        return view('roles.create', compact('permissionUser', 'permissionProduct', 'permissionRole'));
+        return view('roles.create', compact('permissionUser', 'permissionProduct', 'permissionRole'))->with('success', 'Role criada com sucesso!');
     }
 
     public function store(Request $request) {
@@ -47,12 +47,12 @@ class RoleController extends Controller
         $role = Role::create(['name' => $request->input('name')]);
         $role->syncPermissions($request->input('permission'));
     
-        return redirect()->route('roles.index');
+        return redirect()->route('roles.index')->with('success', 'Role criada com sucesso!');
     }
 
     public function destroy($id) {
         Role::where('id',$id)->delete();
-        return redirect()->route('roles.index');
+        return redirect()->route('roles.index')->with('error', 'Role excluida!');
     }
 
     public function show($id) {
@@ -106,7 +106,7 @@ class RoleController extends Controller
     
         $roles->syncPermissions($request->input('permission'));
     
-        return redirect()->route('roles.index');
+        return redirect()->route('roles.index')->with('success', 'Role atualizada!');
 
     }
 

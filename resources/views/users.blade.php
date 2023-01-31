@@ -1,4 +1,4 @@
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" />
+
 
 @extends('layouts.app')
 
@@ -18,9 +18,7 @@
 
     
 
-    <script>
-        toastr.success("{{ Session::get('error') }}");
-    </script>
+    
     
 
 
@@ -84,7 +82,7 @@
                                 @endif
 
                                 @can('user-delete')
-                                    <button type="submit"
+                                    <button type="submit" onclick="return confirm('Tem certeza que deseja excluir o Usuário?')"
                                         class="font-bold text-white py-3 px-4 rounded-md bg-red-500 hover:bg-red-600">EXCLUIR</button>
                                 @endcan
                                 
@@ -101,36 +99,7 @@
                 <a href="{{ route('screen') }}">Voltar</a>
     </div>
 
-    <script src="https://code.jquery.com/jquery-3.6.3.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
 
-<script type="text/javascript">
-toastr.options = {
-  "closeButton": false,
-  "debug": false,
-  "newestOnTop": false,
-  "progressBar": false,
-  "positionClass": "toast-bottom-right",
-  "preventDuplicates": false,
-  "onclick": null,
-  "showDuration": "300",
-  "hideDuration": "1000",
-  "timeOut": "5000",
-  "extendedTimeOut": "1000",
-  "showEasing": "swing",
-  "hideEasing": "linear",
-  "showMethod": "fadeIn",
-  "hideMethod": "fadeOut"
-}
-
-    var alertMessage = "{{ Session::get('error') }}"
-    console.log(alertMessage);
-
-    if(alertMessage != '') {
-        toastr.warning(alertMessage)
-    }
-    
-</script>
 
 
 @endsection

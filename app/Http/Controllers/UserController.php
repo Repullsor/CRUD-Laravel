@@ -40,11 +40,11 @@ class UserController extends Controller
 
         if(isset($user->roles)) {
             
-            $userRole = $user->roles->pluck('name','id')->all();
+            $userRole = $user->roles->pluck('name', 'id')->all();
 
         }
     
-        return view('edit', compact('user', 'roles','userRole'));
+        return view('edit', compact('user', 'roles', 'userRole'));
 
     }
 
@@ -80,7 +80,7 @@ class UserController extends Controller
     
     $user->assignRole($request->input('roles'));
 
-    return redirect()->route('users.index');
+    return redirect()->route('users.index')->with('success', 'O usuário foi atualizado!');
 
     }
 
@@ -98,7 +98,7 @@ class UserController extends Controller
             $user->delete();
         }
 
-        return back()->with('error', 'Excluido!');
+        return back()->with('error', 'O usuário foi excluido!');
 
     }
 
@@ -110,14 +110,14 @@ class UserController extends Controller
 
         }
 
-        return redirect()->route('users.index')->with('error', 'Bloqueado!');
+        return redirect()->route('users.index')->with('warning', 'O usuário foi bloqueado!');
 
     }
 
     public function unlock($id) {
 
         User::where('id', $id)->update(['status'=>1]);
-        return redirect()->route('users.index')->with('error', 'Desbloqueado!');;
+        return redirect()->route('users.index')->with('warning', 'O usuário foi desbloqueado!');;
 
     }
 

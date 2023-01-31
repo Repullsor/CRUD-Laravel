@@ -11,11 +11,10 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto" rel="stylesheet">
 
     <!-- CSS Bootstrap -->
-    <link rel="stylesheet" 
-    href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.0.1/tailwind.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.0.1/tailwind.min.css">
 
     <!-- Toastr -->
-   
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" />
 
     <!-- CSS da aplicação -->
 
@@ -24,6 +23,7 @@
 </head>
 
 <body class="bg-gray-100 text-gray-800" style="height: 100%">
+
 
     <nav class="flex py-5 bg-indigo-500 text-white">
         <div class="w-1/2 px-12 mr-auto">
@@ -60,8 +60,108 @@
     <div id="content" style="height: 100%">
         @yield('content')
     </div>
-    
 
+    <script src="https://code.jquery.com/jquery-3.6.3.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+
+    <script type="text/javascript">
+        toastr.options = {
+            "closeButton": false,
+            "debug": false,
+            "newestOnTop": false,
+            "progressBar": false,
+            "positionClass": "toast-bottom-right",
+            "preventDuplicates": false,
+            "onclick": null,
+            "showDuration": "300",
+            "hideDuration": "1000",
+            "timeOut": "5000",
+            "extendedTimeOut": "1000",
+            "showEasing": "swing",
+            "hideEasing": "linear",
+            "showMethod": "fadeIn",
+            "hideMethod": "fadeOut"
+        }
+
+
+        var alertSuccess = "{{ Session::get('success') }}"
+        var alertError = "{{ Session::get('error') }}"
+        var alertInfo = "{{ Session::get('info') }}"
+        var alertWarning = "{{ Session::get('warning') }}"
+
+        // console.log(alertSuccess);
+        if(alertSuccess) {
+            toastr.success(alertSuccess);
+        }
+        
+        if(alertError) {
+            toastr.error(alertError);
+        }
+
+        if(alertInfo) {
+            toastr.info(alertInfo);
+        }
+
+        if(alertWarning) {
+            toastr.warning(alertWarning);
+        }
+
+        // var alertMessage = "{{ Session::get('success') }}" 
+        // if (alertMessage != '')
+        //     switch (alertMessage) {
+
+        //         case: "{{ Session::get('success') }}":
+        //             toastr.success(alertMessage)
+        //             break;
+        //         case: "{{ Session::get('error') }}":
+        //             toastr.error(alertMessage)
+        //             break;
+        //         case: "{{ Session::get('info') }}":
+        //             toastr.info(alertMessage)
+        //             break;
+        //         default: "{{ Session::get('warning') }}":
+        //             toastr.warning(alertMessage)
+        //             break;
+        //     }
+
+
+
+        // alertMessageError = "{{ Session::get('error') }}"
+        // if (alertMessageSuccess = "{{ Session::get('success') }}") {
+        //     toastr.success(alertMessageSuccess);
+        // } else {
+        //     toastr.error(alertMessageError)
+        // }
+
+        // var alertMessage = "{{ Session::get('message') }}"
+        // console.log(alertMessage);
+
+        // if (alertMessage != '') {
+        //     toastr.warning(alertMessage)
+        // }
+
+        // alertMessage = "{{ Session::get('success') }}";
+
+        // success = "{{ Session::get('success') }}";
+        // error = "{{ Session::get('error') }}";
+        // info = "{{ Session::get('info') }}";
+        // warning = "{{ Session::get('warning') }}";
+
+        // switch (alertMessage) {
+        //     case success:
+        //         toastr.success(success);
+        //         break;
+        //     case error:
+        //         toastr.error(error);
+        //         break;
+        //     case info:
+        //         toastr.info(info);
+        //         break;
+        //     case warning:
+        //         toastr.warning(warning);
+        //         break;
+        // }
+    </script>
 
 </body>
 

@@ -35,7 +35,7 @@ class ProductController extends Controller
 
         $product = Product::create(request(['name', 'description', 'quantity']));
 
-        return redirect()->to('/products');
+        return redirect()->to('/products')->with('success', 'Produto criado com sucesso!');
     }
 
     public function edit($id) {
@@ -59,7 +59,7 @@ class ProductController extends Controller
         $data = $request->only('name', 'description', 'quantity');
     
         $product->update($data);
-        return redirect()->route('products.index');
+        return redirect()->route('products.index')->with('success', 'Produto atualizado!');
     
         }
 
@@ -68,7 +68,7 @@ class ProductController extends Controller
             $product = Product::find($id);
             $product->delete();
         
-        return back();
+        return back()->with('error', 'Produto excluido!');
 
     }
 }

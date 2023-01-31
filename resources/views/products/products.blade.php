@@ -60,7 +60,7 @@
                                 @endcan
                             
                                 @can('product-delete')
-                                    <button type="submit"
+                                    <button type="submit" onclick="return confirm('Tem certeza que deseja excluir o Produto?')"
                                     class="font-bold text-white py-3 px-4 rounded-md bg-red-500 hover:bg-red-600">EXCLUIR</button>
                                 @endcan
                                 
