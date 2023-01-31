@@ -15,7 +15,7 @@ rounded-lg shadow-lg">
             <input type="text"
                 class="border border-gray-200 rounded-md bg-gray-200 w-full
     text-lg placeholder-gray-900 p-2 my-2 focus:bg-white"
-                placeholder="Nome do produto" id="name" name="name">
+                placeholder="Nome do produto" id="name" name="name" value="{{ old('name') }}"> 
 
             @error('name')
                 <p class="border border-red-500 rounded-md bg-red-100 w-full

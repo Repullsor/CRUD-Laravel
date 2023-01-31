@@ -14,6 +14,9 @@
     <link rel="stylesheet" 
     href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.0.1/tailwind.min.css">
 
+    <!-- Toastr -->
+   
+
     <!-- CSS da aplicação -->
 
     <!-- <link rel="stylesheet" href="/css/styles.css"> -->

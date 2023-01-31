@@ -98,21 +98,26 @@ class UserController extends Controller
             $user->delete();
         }
 
-        return back();
+        return back()->with('error', 'Excluido!');
 
     }
 
     public function block($id) {
 
-        User::where('id', $id)->update(['status'=>0]);
-        return redirect()->route('users.index');
+        if(auth()->user()->id != $id) {
+            
+         User::where('id', $id)->update(['status'=>0]);
+
+        }
+
+        return redirect()->route('users.index')->with('error', 'Bloqueado!');
 
     }
 
     public function unlock($id) {
 
         User::where('id', $id)->update(['status'=>1]);
-        return redirect()->route('users.index');
+        return redirect()->route('users.index')->with('error', 'Desbloqueado!');;
 
     }
 

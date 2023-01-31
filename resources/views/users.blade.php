@@ -1,3 +1,5 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" />
+
 @extends('layouts.app')
 
 @section('title', 'Users')
@@ -13,6 +15,14 @@
             vertical-align: middle;
         }
     </style>
+
+    
+
+    <script>
+        toastr.success("{{ Session::get('error') }}");
+    </script>
+    
+
 
     <div class="relative overflow-x-auto shadow-md sm:rounded-lg mt-5">
         <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
@@ -62,12 +72,14 @@
                                     @can('user-block')
                                         <a href="/users/block/{{ $user->id }}"
                                             class="font-bold text-white py-3 px-4 rounded-md bg-yellow-300 hover:bg-yellow-400">BLOQUEAR</a>
+                                            
                                     @endcan
                                     
                                 @else
                                     @can('user-unlock')
                                     <a href="/users/unlock/{{ $user->id }}"
                                         class="font-bold text-white py-3 px-4 rounded-md bg-yellow-300 hover:bg-yellow-400">DESBLOQUEAR</a>
+                                        
                                     @endcan
                                 @endif
 
@@ -88,5 +100,37 @@
                 py-3 px-4 rounded-md bg-indigo-500 hover:bg-blue-600" style="margin: 10px auto; width: 80px; text-align: center">
                 <a href="{{ route('screen') }}">Voltar</a>
     </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.3.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+
+<script type="text/javascript">
+toastr.options = {
+  "closeButton": false,
+  "debug": false,
+  "newestOnTop": false,
+  "progressBar": false,
+  "positionClass": "toast-bottom-right",
+  "preventDuplicates": false,
+  "onclick": null,
+  "showDuration": "300",
+  "hideDuration": "1000",
+  "timeOut": "5000",
+  "extendedTimeOut": "1000",
+  "showEasing": "swing",
+  "hideEasing": "linear",
+  "showMethod": "fadeIn",
+  "hideMethod": "fadeOut"
+}
+
+    var alertMessage = "{{ Session::get('error') }}"
+    console.log(alertMessage);
+
+    if(alertMessage != '') {
+        toastr.warning(alertMessage)
+    }
+    
+</script>
+
 
 @endsection
