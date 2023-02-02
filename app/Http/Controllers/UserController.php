@@ -50,6 +50,14 @@ class UserController extends Controller
 
     public function update(Request $request, $id) {
 
+        $this->validate(request(), [
+            'name' => 'required:roles,name,' . $id,
+            'email' => 'required'
+        ], [
+            'name' => 'Nome é obrigatório!',
+            'email' => 'E-mail é obrigatório!'
+        ]);
+
     $user = User::find($id);
     $data = $request->only('name', 'email');
     $password = $request->input('password');
@@ -93,24 +101,30 @@ class UserController extends Controller
 
     public function destroy($id) {
 
+        $message = 'Este usuário não pode ser excluido!';
+
         if(auth()->user()->id != $id) {
             $user = User::find($id);
             $user->delete();
+            $message = 'O usuário foi excluido!';
         }
-
-        return back()->with('error', 'O usuário foi excluido!');
-
+        
+        return redirect()->route('users.index')->with('error', $message);
     }
 
     public function block($id) {
+
+        $message = 'Este usuário não pode ser bloqueado!';
 
         if(auth()->user()->id != $id) {
             
          User::where('id', $id)->update(['status'=>0]);
 
+         $message = 'O usuário foi bloqueado!';
+
         }
 
-        return redirect()->route('users.index')->with('warning', 'O usuário foi bloqueado!');
+        return redirect()->route('users.index')->with('warning', $message);
 
     }
 

@@ -23,6 +23,9 @@
                 <td scope="col" class="px-6 py-3">{{ $product['description'] }}</td>
                 <td scope="col" class="px-6 py-3">{{ $product['quantity'] }}</td>
                 <td>
+                    <form action="{{ route('product.delete', $product['id']) }}" method="POST">
+                    @csrf
+                    @method('DELETE')
 
                     @can('product-edit')
                         <a href="/products/edit/{{ $product['id'] }}" class="font-bold text-white
@@ -30,22 +33,19 @@
                     @endcan
                     
                     @can('product-delete')
-                        <button type="submit"
+                        <button type="submit" onclick="return confirm('Tem certeza que deseja excluir o Produto?')"
                         class="font-bold text-white py-3 px-4 rounded-md bg-red-500 hover:bg-red-600">EXCLUIR</button>
                     @endcan
-                    
+                </form>
                 </td>
             </tr>
-            
-            
-
         </thead>
     </table>
     
 </div>
-<div class="font-bold text-white
-    py-3 px-4 rounded-md bg-indigo-500 hover:bg-blue-600" style="margin: 10px auto; width: 80px; text-align: center">
-    <a href="{{ route('products.index') }}">Voltar</a>
+<div style="margin: 20px auto; width: 80px; text-align: center">
+    <a href="{{ route('products.index') }}" class="font-bold text-white
+    py-3 px-4 rounded-md bg-indigo-500 hover:bg-blue-600">Voltar</a>  
 </div>
 
 

@@ -29,21 +29,22 @@
                     @endif
                 </td>
                 <td>
+                    <form action="{{ route('users.delete', $user->id) }}" method="POST">
+                    @csrf
+                    @method('DELETE')
+                    
                     @can('user-edit')
                         <a href="/edit/{{$user['id']}}" class="font-bold text-white
                         py-3 px-4 rounded-md bg-blue-500 hover:bg-blue-600">Editar</a>
                     @endcan
                     
                     @can('user-delete')
-                        <button type="submit"
+                        <button type="submit" onclick="return confirm('Tem certeza que deseja excluir o Usuário?')"
                         class="font-bold text-white py-3 px-4 rounded-md bg-red-500 hover:bg-red-600">EXCLUIR</button>
                     @endcan
-                    
+                </form>
                 </td>
             </tr>
-            
-            
-
         </thead>
     </table>
     

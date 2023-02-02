@@ -25,7 +25,7 @@ class RoleSeeder extends Seeder
 
         $role = Role::create(['name' => 'Moderador']);
      
-        $permissions = array(1, 2, 3, 4, 5, 7, 8, 9, 11, 12);
+        $permissions = array(1, 3, 4, 6, 7, 8, 10);
    
         $role->syncPermissions($permissions);
 

@@ -5,10 +5,11 @@
 @section('content')
 
 @can('product-create')
-   <div class="ml-auto flex justify-end font-bold text-white
-                py-3 px-4 rounded-md bg-green-500 hover:bg-green-600 flex center" style="width: 175px; margin-block: 10px 0; margin-right: 62px">
-                <a href="{{ route('create') }}">Adicionar Produto</a>
-    </div> 
+
+    <div style="width: 180px; margin-block: 10px 0; margin-left: 82%">
+        <a href="{{ route('create') }}" class="ml-auto flex justify-center font-bold text-white
+        py-3 px-4 rounded-md bg-green-500 hover:bg-green-600 flex center">Adicionar Produto</a>
+</div>
 @endcan
 
     <h1 class="text-center font-bold text-xl my-5">Lista de Produtos</h1>
@@ -72,9 +73,9 @@
             </thead>
         </table>
     </div>
-    <div class="font-bold text-white
-                py-3 px-4 rounded-md bg-indigo-500 hover:bg-blue-600" style="margin: 10px auto; width: 80px; text-align: center">
-                <a href="{{ route('screen') }}">Voltar</a>
+    <div style="margin: 20px auto; width: 80px; text-align: center">
+        <a href="{{ route('screen') }}" class="font-bold text-white
+        py-3 px-4 rounded-md bg-indigo-500 hover:bg-blue-600">Voltar</a>  
     </div>
 
 @endsection

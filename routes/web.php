@@ -91,7 +91,7 @@ Route::get('/login', [SessionsController::class, 'create'])
         ->middleware('guest')
         ->name('login.index');
     
-    Route::post('/login', [SessionsController::class, 'store'])
+Route::post('/login', [SessionsController::class, 'store'])
         ->name('login.store');
 
 

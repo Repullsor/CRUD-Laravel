@@ -16,12 +16,11 @@
             <input type="text"
                 class="border border-gray-200 rounded-md bg-gray-200 w-full
                 text-lg placeholder-gray-900 p-2 my-2 focus:bg-white"
-                placeholder="Novo Nome da Role" id="name" name="name" value="{{ $role['name'] }}">
+                placeholder="Novo Nome da Role" id="name" name="name" value="{{ old('description') ?? $role['name'] }}">
 
             @error('name')
                 <p class="border border-red-500 rounded-md bg-red-100 w-full
-                text-red-600 p-2 my-2"> O nome da role já existe!
-                </p>
+                text-red-600 p-2 my-2">{{ $message }}</p>
             @enderror
 
             <p class="font-bold my-2 text-center">Permissões:</p>
@@ -68,6 +67,12 @@
                     
                 </div>
             </div>
+
+            @error('permission')
+                <p class="border border-red-500 rounded-md bg-red-100 w-full
+                text-red-600 p-2 my-2">{{ $message }}</p>
+            @enderror
+            
         </div>
 
 

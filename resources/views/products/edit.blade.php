@@ -15,17 +15,35 @@
             <input type="text"
                 class="border border-gray-200 rounded-md bg-gray-200 w-full
                 text-lg placeholder-gray-900 p-2 my-2 focus:bg-white"
-                placeholder="Novo Nome do Produto" id="name" name="name" value="{{ $product['name'] }}">
+                placeholder="Novo Nome do Produto" id="name" name="name" value="{{ old('name') ?? $product['name'] }}">
+
+            @error('name')
+                <p class="border border-red-500 rounded-md bg-red-100 w-full
+                text-red-600 p-2 my-2">{{ $message }}
+                </p>
+            @enderror
 
             <input type="text"
                 class="border border-gray-200 rounded-md bg-gray-200 w-full
                 text-lg placeholder-gray-900 p-2 my-2 focus:bg-white"
-                placeholder="Nova descrição" id="description" name="description" value="{{ $product['description'] }}">
+                placeholder="Nova descrição" id="description" name="description" value="{{ old('description') ?? $product['description'] }}">
 
-            <input type="number"
+            @error('description')
+                <p class="border border-red-500 rounded-md bg-red-100 w-full
+                text-red-600 p-2 my-2"> {{ $message }}
+                </p>
+            @enderror
+
+            <input type="number" min="1"
                 class="border border-gray-200 rounded-md bg-gray-200 w-full
                 text-lg placeholder-gray-900 p-2 my-2 focus:bg-white"
-                placeholder="Nova Quantidade" id="quantity" name="quantity" value="{{ $product['quantity'] }}">
+                placeholder="Nova Quantidade" id="quantity" name="quantity" value="{{ old('quantity') ?? $product['quantity'] }}">
+
+            @error('quantity')
+                <p class="border border-red-500 rounded-md bg-red-100 w-full
+                text-red-600 p-2 my-2"> {{ $message }}
+                </p>
+            @enderror
 
                 <div class="" style="display: flex; justify-content: center;">
                     <a href="{{ route('products.index') }}"

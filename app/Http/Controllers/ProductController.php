@@ -30,7 +30,15 @@ class ProductController extends Controller
         $this->validate(request(), [
             'name' => 'required',
             'description' => 'required',
-            'quantity' => 'required',
+            'quantity' => 'required|numeric|min:1',
+        ], [
+            'required' => ':attribute é obrigatório!',
+            'min' => "O valor não pode ser menor que 1",
+            'numeric' => 'O campo precisa ser um número'
+        ], [
+            'name' => "Nome",
+            'description' =>  "Descrição",
+            'quantity' => "Quantidade"
         ]);
 
         $product = Product::create(request(['name', 'description', 'quantity']));
@@ -55,12 +63,22 @@ class ProductController extends Controller
 
     public function update(Request $request, $id) {
 
+        $this->validate(request(), [
+            'name' => 'required',
+            'description' => 'required',
+            'quantity' => 'required|min:1',
+        ], [
+            'name' => 'Nome é obrigatório!',
+            'description' => 'Descrição é obrigatório!',
+            'quantity' => 'Quantidade é obrigatória!'
+        ]);
+
         $product = Product::find($id);
         $data = $request->only('name', 'description', 'quantity');
     
         $product->update($data);
         return redirect()->route('products.index')->with('success', 'Produto atualizado!');
-    
+
         }
 
     public function destroy($id) {
@@ -68,7 +86,7 @@ class ProductController extends Controller
             $product = Product::find($id);
             $product->delete();
         
-        return back()->with('error', 'Produto excluido!');
+        return redirect()->route('products.index')->with('error', 'Produto excluido!');
 
     }
 }

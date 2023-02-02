@@ -5,9 +5,9 @@
 @section('content')
 
 @can('role-create')
-    <div class="ml-auto flex justify-end font-bold text-white
-                py-3 px-4 rounded-md bg-green-500 hover:bg-green-600 flex center" style="width: 150px; margin-block: 10px 0; margin-right: 62px">
-                <a href="{{ route('roles.create') }}">Criar Nova Role</a>
+    <div  style="width: 150px; margin-block: 10px 0; margin-left: 84%">
+                <a href="{{ route('roles.create') }}" class="ml-auto flex justify-end font-bold text-white
+                py-3 px-4 rounded-md bg-green-500 hover:bg-green-600 flex center">Criar Nova Role</a>
     </div>
 @endcan
 
@@ -67,8 +67,8 @@
             </thead>
         </table>
     </div>
-    <div class="font-bold text-white
-                py-3 px-4 rounded-md bg-indigo-500 hover:bg-blue-600" style="margin: 10px auto; width: 80px; text-align: center">
-                <a href="{{ route('screen') }}">Voltar</a>
+    <div style="margin: 20px auto; width: 80px; text-align: center">
+                <a href="{{ route('screen') }}" class="font-bold text-white
+                py-3 px-4 rounded-md bg-indigo-500 hover:bg-blue-600">Voltar</a>  
     </div>
 @endsection

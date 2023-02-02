@@ -16,12 +16,6 @@
         }
     </style>
 
-    
-
-    
-    
-
-
     <div class="relative overflow-x-auto shadow-md sm:rounded-lg mt-5">
         <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
 
@@ -46,6 +40,7 @@
                         <td scope="col" class="px-6 py-3">{{ $user->name }}</td>
                         <td scope="col" class="px-6 py-3">{{ $user->email }}</td>
                         <td scope="col" class="px-6 py-3">
+                            
                             @if(!empty($user->getRoleNames()[0]))
                                 <label>{{ $user->getRoleNames()[0] }}</label>
                             @else
@@ -90,16 +85,12 @@
                         </td>
                     </tr>
                 @endforeach
-
             </thead>
         </table>
     </div>
-    <div class="font-bold text-white
-                py-3 px-4 rounded-md bg-indigo-500 hover:bg-blue-600" style="margin: 10px auto; width: 80px; text-align: center">
-                <a href="{{ route('screen') }}">Voltar</a>
+        <div style="margin: 20px auto; width: 80px; text-align: center">
+            <a href="{{ route('screen') }}" class="font-bold text-white
+            py-3 px-4 rounded-md bg-indigo-500 hover:bg-blue-600">Voltar</a>  
     </div>
-
-
-
 
 @endsection

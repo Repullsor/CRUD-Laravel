@@ -17,8 +17,16 @@ class RegisterController extends Controller {
 
         $this->validate(request(), [
             'name' => 'required',
-            'email' => 'required|email',
+            //                  unique:table,column,execptionId === unique vai pesquisar na tabela passada pela coluna passada tirando  o registro passado
+            'email' => 'required|unique:users,email',
             'password' => 'required|confirmed',
+        ], [
+           'required' => ':attribute obrigatório!',
+           'unique' => 'O e-mail já está em uso, escolha outro',
+           'password' => 'Crie e confirme a senha' 
+        ], [
+            'name' => 'Nome',
+            'password' => 'Senha'
         ]);
 
         // dd(request(['password']));

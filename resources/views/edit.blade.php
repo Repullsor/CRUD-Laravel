@@ -16,24 +16,39 @@ rounded-lg shadow-lg">
             <input type="text"
                 class="border border-gray-200 rounded-md bg-gray-200 w-full
                 text-lg placeholder-gray-900 p-2 my-2 focus:bg-white"
-                placeholder="Novo Nome" id="name" name="name" value="{{ $user['name'] }}">
+                placeholder="Novo Nome" id="name" name="name" value="{{ old('name') ?? $user['name'] }}">
+
+            @error('name')
+                <p class="border border-red-500 rounded-md bg-red-100 w-full
+                text-red-600 p-2 my-2">{{ $message }}</p>
+            @enderror
 
             <input type="email"
                 class="border border-gray-200 rounded-md bg-gray-200 w-full
                 text-lg placeholder-gray-900 p-2 my-2 focus:bg-white"
-                placeholder="Novo e-mail" id="email" name="email" value="{{ $user['email'] }}">
+                placeholder="Novo e-mail" id="email" name="email" value="{{ old('email') ?? $user['email'] }}">
+
+            @error('email')
+                <p class="border border-red-500 rounded-md bg-red-100 w-full
+                text-red-600 p-2 my-2">{{ $message }}</p>
+            @enderror
 
             <input type="password"
                 class="border border-gray-200 rounded-md bg-gray-200 w-full
                 text-lg placeholder-gray-900 p-2 my-2 focus:bg-white"
                 placeholder="Nova Senha" id="password" name="password">
 
+            @error('password')
+                <p class="border border-red-500 rounded-md bg-red-100 w-full
+                text-red-600 p-2 my-2">{{ $message }}</p>
+            @enderror
+
             <input type="password"
                 class="border border-gray-200 rounded-md bg-gray-200 
                 w-full text-lg placeholder-gray-900 p-2 my-2 focus:bg-white"
                 placeholder="Confirme a nova senha" id="password_confirmation" name="password_confirmation">
 
-                <label for="pet-select">Atribua uma role:</label>
+                <label for="pet-select" >Atribua uma role:</label>
                  {!! Form::select('roles[]', $roles, $userRole, array('class' => 'form-control')) !!}
                  
             <div class="" style="display: flex; justify-content: center;">

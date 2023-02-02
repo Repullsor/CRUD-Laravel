@@ -14,6 +14,13 @@ class SessionsController extends Controller {
 
     public function store() {
 
+        $this->validate(request(), [
+            'email' => 'required',
+            'password' => 'required'
+        ], [
+           'email' => 'E-mail obrigatório',
+           'password' => 'Senha obrigatória!' 
+        ]);
 
         $user = User::where('email', request(['email']))->get();
 
@@ -29,7 +36,7 @@ class SessionsController extends Controller {
         // dd(request(['email', 'password']));
         
         if(auth()->attempt(request(['email', 'password'])) == false) {
-            return back()->with('message', 'Email ou senha incorretos');
+            return back()->with('warning','Usuário ou senha incorretos!');
 
         } else {
 
